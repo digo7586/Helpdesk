@@ -1,0 +1,91 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 13px;
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-head h2 {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.card-head span {
+    font-size: 2rem;
+}
+
+.card-head span.clipBoard {
+    color: #53b1b8;
+}
+
+.card-head span.clock {
+    color:  #399240;
+}
+
+.card-head span.check {
+    color: #7d27ee;
+}
+
+.card-head span.clock {
+    color: #7c8ce6;
+}
+
+.card-head span.people {
+    color:  #eb68b9;
+}
+
+.card-progress small {
+    color: #777;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: 2px;  
+}
+
+.card-indicator {
+    margin: .7rem 0rem;
+    height: 10px;
+    border-radius: 4px;
+    background: #e9edf2;
+    overflow: hidden;
+}
+
+.indicator {
+    height: 10px;
+    border-radius: 4px;
+}
+
+.indicator.one {
+    width: 100%;
+    background: #4fcdd6;
+}
+
+.indicator.two{
+    
+    background: #48af51;
+}
+
+.indicator.three{
+   
+    background: #ae7af3;
+}
+
+.indicator.five{
+    background: #7c8ce6;
+}
+
+.indicator.four{
+    background: #fa57a9;
+}

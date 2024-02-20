@@ -1,0 +1,175 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+	margin: 0;
+	padding: 0;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    color: #2e2c2c;
+    background: #d0e1f7
+}
+
+
+
+/* navbar */
+
+.mainbg {
+	background-color: #1b305cb4;
+	padding: 0 6px;
+	margin-bottom: 1rem;
+}
+
+.logo {
+	width: 140px;
+	height: 60px;
+}
+
+.navUser {
+	color: #fff;
+	font-size: 18px;
+}
+
+.navEng {
+	color: #ffffffb0;
+    text-decoration: none;
+    transition-duration:0.6s;
+	margin-right: 10px;
+	cursor: pointer;
+	
+}
+
+li>a>i {
+	margin-right: 10px;
+}
+
+.navbar-toggler {
+	background-color: #f5f0ed;
+}
+ /* botão abrir ticket*/
+
+
+
+.chat {
+	display: flex;
+	margin: 2rem 0px 0px 1rem;
+	
+}
+
+.btn-chat {
+	background: #0089cf;
+	color: #fff
+}
+
+.btn-chat a {
+	text-decoration: none;
+	
+}
+
+.btn-chat:hover {
+	cursor: pointer;
+	background: #63bce9;
+	color: #000;
+}
+
+.icoChat {
+	font-size: 16px;
+}
+
+.ticket-title {
+	font-weight:bold;
+	font-size:20px;
+	margin-left:10px;
+}
+
+
+.answered {
+	font-size:13px;
+	color:#ffffff;
+	background-color: rgb(8, 170, 30);
+	margin:0px 0px 0px 8px;
+	border-radius: 50px;
+	padding: 8px;
+}
+
+/* botão sair*/
+
+.btnSair {
+	width: 45px;
+	padding: 5px;
+	border: none;
+	background: #da3030;
+	font-size: 15px;
+	font-weight: 500;
+	color: #fff;
+	border-radius: 5px;
+	letter-spacing: .1rem;
+	transition: all .3s;
+	margin-left: 6px;
+	text-decoration: none;
+}
+
+.btnSair:hover {
+	background-color: #FFF;
+	color: #da3030;
+	text-decoration:underline
+}
+
+
+/* page de bate-bapo*/
+.caixaDoForm {
+	padding: 20px 0px 30px;
+	width: 950px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid rgba(0, 128, 0, 0.123);
+	border-radius: 8px;
+	
+	
+}
+
+
+#section-resposta {
+	width: 800px;
+	height: 500px;
+	overflow: auto;
+	overflow-x: hidden;
+	margin-left: 208px;
+
+	
+}
+
+.txtArea {
+	width: 900px;
+	margin-top: 20px;
+	margin-left: 70px;
+	
+}
+
+
+
+.caixaDoFormtxtArea {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+	
+}
+
+/* mostra escode senha */
+
+#showEye {
+	position: absolute;
+	left: 448px;
+	bottom: 108px;
+	cursor: pointer;
+	
+}
+
