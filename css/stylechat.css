@@ -7,13 +7,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-
 
 body {
   min-height: 100vh;
@@ -23,13 +21,10 @@ body {
     background: #d0e1f7
 }
 
-
 /* navbar */
-
 .mainbg {
 	background-color: #1b305cb4;
-	padding: 0 6px;
-	margin-bottom: 1rem;
+
 }
 
 .logo {
@@ -38,38 +33,46 @@ body {
 }
 
 .navUser {
+  display: flex;
+  flex-direction: row;
 	color: #fff;
 	font-size: 18px;
 }
 
-.navEng {
-	color: #ffffffb0;
-    text-decoration: none;
-    transition-duration:0.6s;
-	margin-right: 10px;
-	
-	
+@media (max-width: 510px) {
+  .logo {
+    display: none;
+  }
+
+  .navUser {
+    display: flex;
+    flex-direction: column;
+  }  
 }
 
+
+
 .perfil {
+  margin-right: 15px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
+.nav-item>a {
+  color: #fff;
+}
+
 li>a>i {
+  color: #ffffffb0;
 	margin-right: 10px;
 }
 
 .navbar-toggler {
 	background-color: #f5f0ed;
 }
+
  /* botão abrir ticket*/
-
-
-
-
-
 .btn-chat {
 	background: #0089cf;
 	color: #fff
@@ -77,7 +80,6 @@ li>a>i {
 
 .btn-chat a {
 	text-decoration: none;
-	
 }
 
 .btn-chat:hover {
@@ -96,7 +98,6 @@ li>a>i {
 	margin-left:10px;
 }
 
-
 .answered {
 	font-size:13px;
 	color:#ffffff;
@@ -107,7 +108,6 @@ li>a>i {
 }
 
 /* botão sair*/
-
 .btnSair {
 	width: 45px;
 	padding: 5px;
@@ -129,7 +129,6 @@ li>a>i {
 	text-decoration:underline
 }
 
-
 /* page de bate-bapo*/
 .caixaDoForm {
 	padding: 20px 0px 30px;
@@ -139,11 +138,8 @@ li>a>i {
 	justify-content: center;
 	align-items: center;
 	border: 2px solid rgba(0, 128, 0, 0.123);
-	border-radius: 8px;
-	
-	
+	border-radius: 8px;	
 }
-
 
 #section-resposta {
 	width: 800px;
@@ -151,50 +147,84 @@ li>a>i {
 	overflow: auto;
 	overflow-x: hidden;
 	margin-left: 208px;
-
-	
 }
 
 .txtArea {
 	width: 900px;
 	margin-top: 20px;
 	margin-left: 70px;
-	
 }
-
-
 
 .caixaDoFormtxtArea {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 30px;
-	
 }
 
 /* mostra escode senha */
-
 #showEye {
 	position: absolute;
 	left: 448px;
 	bottom: 108px;
 	cursor: pointer;
-	
 }
 
-
-
-
 .wrapper{
+  margin: 200px auto;
+  
+
   background: #fff;
   max-width: 450px;
   width: 100%;
   border-radius: 16px;
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
-              0 32px 64px -48px rgba(0,0,0,0.5);
-
-              
+              0 32px 64px -48px rgba(0,0,0,0.5);          
 }
+
+
+.circle {
+  position: fixed;
+  top: -50vmin;
+  left: -50vmin;
+  width: 100vmin;
+  height: 100vmin;
+  border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+  background: #65c8ff;
+}
+
+.circle1 {
+  position: fixed;
+  top: -20vmin;
+  left: -30vmin;
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+  background: #0089cf;
+}
+
+.circle::after {
+  content: "";
+  position: inherit;
+  right: -50vmin;
+  bottom: -55vmin;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  background: #65c8ff;
+}
+
+.circle1::after {
+  content: "";
+  position: inherit;
+  right: -20vmin;
+  bottom: -30vmin;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  background: #0089cf;
+}
+
 
 /* Login & Signup Form CSS Start */
 .form{

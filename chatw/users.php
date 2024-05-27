@@ -5,8 +5,6 @@
     header("location: login.php");
   }
 
- include "../init2.php";
-
   include_once "header.php"; 
 
  ?>

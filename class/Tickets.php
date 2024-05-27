@@ -63,8 +63,8 @@ class Tickets extends Database {
 			$ticketRows[] = $time->tempo($ticket['date']);
 			$ticketRows[] = $status;
 			
-			$ticketRows[] = '<a href="view_ticket.php?id='.$ticket["uniqid"].'" class="btn btn-primary btn-sm update">Chat</a>';	
-			$ticketRows[] = '<button type="button" name="update" id="'.$ticket["id"].'" class="btn btn-secondary btn-sm update" '.$disbaled.'><i class="bi bi-eye"></i> Visualizar / Editar</button>';
+			$ticketRows[] = '<a href="view_ticket.php?id='.$ticket["uniqid"].'" class="btn btn-primary btn-sm update"><i class="bi bi-eye"></i> Visualizar</a>';	
+			$ticketRows[] = '<button type="button" name="update" id="'.$ticket["id"].'" class="btn btn-secondary btn-sm update" '.$disbaled.'>Editar</button>';
 			$ticketRows[] = '<button type="button" name="delete" id="'.$ticket["id"].'" class="btn btn-danger btn-sm delete"  '.$disbaled.'>Fechar</button>';
 			$ticketData[] = $ticketRows;
 		}
@@ -77,7 +77,7 @@ class Tickets extends Database {
 		echo json_encode($output);
 	}	
 	public function getRepliedTitle($title) {
-		$title = $title.'<span class="answered"><i class="bi bi-chat-dots"> Resposta</i></span>';
+		$title = $title.'<span class="answered">Novo Chamado</span>';
 		return $title; 		
 	}
 	public function createTicket() {      

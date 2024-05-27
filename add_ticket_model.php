@@ -1,4 +1,4 @@
-<div id="ticketModal" class="modal fade">
+	<div id="ticketModal" class="modal fade">
 	<div class="modal-dialog">
 		<form method="post" id="ticketForm">
 			<div class="modal-content">

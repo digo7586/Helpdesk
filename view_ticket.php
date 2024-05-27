@@ -22,24 +22,29 @@ $tickets->updateTicketReadStatus($ticketDetails['id']);
 	<section class="comment-list" id="section-resposta">
 		<article class="row">
 			<div class="col-md-10 col-sm-10">
-				<div class="panel panel-default arrow left">
-					<div class="panel-heading right">
-						<?php if ($ticketDetails['resolved']) { ?>
-							<button type="button" class="btn btn-danger btn-sm">
-								<span class="bi bi-eye-slash"></span> Fechado
-							</button>
-						<?php } else { ?>
-							<button type="button" class="btn btn-success btn-sm">
-								<span class="bi bi-eye"></span> Aberto
-							</button>
-						<?php } ?>
-						<span class="ticket-title"><?php echo $ticketDetails['title']; ?></span>
-					</div>
+				<div class="card p-3">
+					
+					<div class="panel panel-default arrow left">
+						<div class="panel-heading right">
+			<div class="card-title">
+			<?php if ($ticketDetails['resolved']) { ?>
+				<button type="button" class="btn btn-danger btn-sm">
+					<span class="bi bi-eye-slash"></span> Fechado
+				</button>
+				<?php } else { ?>
+					<button type="button" class="btn btn-success btn-sm">
+						<span class="bi bi-eye"></span> Aberto
+					</button>
+					<?php } ?>
+					<span class="ticket-title"><?php echo $ticketDetails['title']; ?></span>
+				</div>
+			</div>
 					<div class="panel-body">
+						
 						<div class="comment-post">
 							<p class="mt-2">
 								<?php echo $ticketDetails['message']; ?>
-							</p>el-body
+							</p>
 						</div>
 					</div>
 					<div class="panel-heading right">
@@ -47,11 +52,12 @@ $tickets->updateTicketReadStatus($ticketDetails['id']);
 						&nbsp;&nbsp;<span class="bi bi-person-circle"></span> <?php echo $ticketDetails['creater']; ?>
 						&nbsp;&nbsp;<span class="bi bi-briefcase"></span> <?php echo $ticketDetails['department']; ?>
 					</div>
-					<hr>
+					
+				</div>
 				</div>
 			</div>
 		</article>
-		<section>
+		<!-- <section>
 			<?php foreach ($ticketReplies as $replies) { ?>
 				<article class="row">
 					<div class="col-md-10 col-sm-10">
@@ -83,9 +89,9 @@ $tickets->updateTicketReadStatus($ticketDetails['id']);
 					</div>
 				</article>
 			<?php } ?>
-		</section>
+		</section> -->
 	</section>
-
+<!--
 	<section class="caixaDoFormtxtArea">
 		<form method="post" id="ticketReply" class="txtArea">
 			<article class="row">
@@ -103,7 +109,7 @@ $tickets->updateTicketReadStatus($ticketDetails['id']);
 			<input type="hidden" name="ticketId" id="ticketId" value="<?php echo $ticketDetails['id']; ?>" />
 			<input type="hidden" name="action" id="action" value="saveTicketReplies" />
 		</form>
-	</section>
+	</section>-->
 
 	<?php include('add_ticket_model.php'); ?>
 </div>

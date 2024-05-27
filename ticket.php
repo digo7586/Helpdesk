@@ -79,7 +79,7 @@ while ($chamadosfinalizados = mysqli_fetch_object($totalConcluido)) {
 				<div>
 					<a href="./chatw/users.php" target="_blank">
 						<button type="button" class="btn btn-chat ms-5">
-							<i class="bi bi-chat-dots icoChat"></i> <span>Logar Chat</span>
+							<i class="bi bi-chat-dots icoChat"></i> <span>Bag Chat</span>
 						</button>
 					</a>
 				</div>

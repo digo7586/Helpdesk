@@ -73,7 +73,6 @@ $setores = $link->query("select * from hd_departments order by name ASC");
                 </div>
                 <table>
                     <thead>
-
                         <tr>
                             <th>Setor</th>
                             <th>Chamados</th>
@@ -87,9 +86,7 @@ $setores = $link->query("select * from hd_departments order by name ASC");
                                 <td>
                                     <?php
                                     $setorDaOcorrencia = $ocorrenciaPorSetor->department;
-
                                     $setorNome = $link->query("SELECT * FROM `hd_departments` WHERE id = $setorDaOcorrencia");
-
                                     while ($setor = mysqli_fetch_object($setorNome)) {
                                         echo $setor->name;
                                     }
