@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    color: #2e2c2c;
+    background: #d0e1f7
+}
+
+/* navbar */
+
+.mainbg {
+	background-color: #1b305cb4;
+	padding: 0 10px;
+	margin-bottom: 1rem;
+}
+
+.logo {
+	width: 140px;
+	height: 60px;
+}
+
+.navUser {
+	color: #fff;
+	font-size: 18px;
+}
+
+.navBag {
+	color: #ffffffb0;
+    text-decoration: none;
+    transition-duration:0.6s;
+	margin-right: 10px;
+	cursor: pointer;
+	
+	/* foto perfil */
+.perfil {
+	margin-right: 10px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+  }
+  
+}
+
+li>a>i {
+	margin-right: 10px;
+}
+
+.navbar-toggler {
+	background-color: #f5f0ed;
+}
+ /* botão abrir ticket*/
+
+
+
+.chat {
+	display: flex;
+	margin: 2rem 0px 0px 1rem;
+	
+}
+
+.btn-chat {
+	background: #0089cf;
+	color: #fff
+}
+
+.btn-chat a {
+	text-decoration: none;
+	
+}
+
+.btn-chat:hover {
+	cursor: pointer;
+	background: #63bce9;
+	color: #000;
+}
+
+.icoChat {
+	font-size: 16px;
+}
+
+.ticket-title {
+	font-weight:bold;
+	font-size:20px;
+	margin-left:10px;
+}
+
+
+.answered {
+	font-size:13px;
+	color:#ffffff;
+	background-color: rgb(8, 170, 30);
+	margin:0px 0px 0px 8px;
+	border-radius: 50px;
+	padding: 8px;
+}
+
+/* botão sair*/
+
+.btnSair {
+	width: 45px;
+	padding: 5px;
+	border: none;
+	background: #da3030;
+	font-size: 15px;
+	font-weight: 500;
+	color: #fff;
+	border-radius: 5px;
+	letter-spacing: .1rem;
+	transition: all .3s;
+	margin-left: 6px;
+	text-decoration: none;
+}
+
+.btnSair:hover {
+	background-color: #FFF;
+	color: #da3030;
+	text-decoration:underline
+}
+
+
+/* page de bate-bapo*/
+.caixaDoForm {
+	padding: 20px 0px 30px;
+	width: 950px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid rgba(107, 102, 102, 0.966);
+	border-radius: 8px;
+	
+	
+}
+
+
+#section-resposta {
+	width: 800px;
+	height: 380px;
+	overflow: auto;
+	overflow-x: hidden;
+	
+	
+}
+
+.txtArea {
+	width: 800px;
+	
+
+}
+
+
+/* mostra escode senha */
+
+#showEye {
+	position: absolute;
+	left: 448px;
+	bottom: 108px;
+	cursor: pointer;
+	
+}
+
+
+
+
+.container{
+    color: #323232;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(image/cloud.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    padding: 1.7rem;
+    border-radius: 1.6rem;
+    cursor: pointer;
+}
+
+p{
+    max-width: 600px;
+    line-height: 1.5;
+    padding: 0.8rem;
+    font-size: 18px;
+}
+
+.container a{
+    display: inline-block;
+    background-color: #323232;
+    color: #fff;
+    padding: 0.7rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 0.7rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.container a:hover{
+    background-color: #222;
+}
+
+.blank-2{
+    width: 100%;
+    min-height: 0vh;
+    background-color: #323232;
+}
+
+.second{
+    background-image: url(image/montain.jpg);
+    background-attachment: fixed;
+    height: 950px;
+    flex-direction: row;
+    gap: 2.5rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 500px;
+    background-color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.7rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card .info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .info img{
+    width: 90%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+    border-radius: 0.7rem;
+}
+
+
+.card .info h3{
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+.card a{
+    margin-bottom: 1.5rem;
+    width: 70%;
+}
+
+.blank-2{
+    min-height: 30vh;
+}
+
+.footer{
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer .column{
+    flex: 1;
+    padding: 0 20px;
+}
+
+.footer .column h3{
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer .column ul{
+    list-style: none;
+    padding: 0;
+}
+
+.footer .column ul li{
+    margin: 20px 0;
+}
+
+.footer .column ul li a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer .column ul li a:hover{
+    color: #ccc;
+}

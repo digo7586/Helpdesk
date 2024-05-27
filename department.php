@@ -7,6 +7,7 @@ include('inc/header.php');
 $user = $users->getUserInfo();
 ?>
 <title>Suporte | ENGEBAG E BAGCLEANER</title>
+<link rel="shortcut icon" href="icone.ico">
 <script src="js/jquery.dataTables.min.js"></script>
 
 <!-- <script src="js/dataTables.bootstrap.min.js"></script> -->
@@ -54,7 +55,6 @@ $user = $users->getUserInfo();
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus"></i></h4>
-					<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">

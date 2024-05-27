@@ -7,6 +7,7 @@ include('inc/header.php');
 $user = $users->getUserInfo();
 ?>
 <title>Suporte | ENGEBAG E BAGCLEANER</title>
+<link rel="shortcut icon" href="icone.ico">
 <script src="js/jquery.dataTables.min.js"></script>
 
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
@@ -40,6 +41,7 @@ $user = $users->getUserInfo();
 				<th>N°</th>
 				<th>Nome</th>
 				<th>Email</th>
+				<th>Setor</th>
 				<th>Criado</th>
 				<th>Tipo</th>
 				<th>Status</th>
@@ -67,6 +69,10 @@ $user = $users->getUserInfo();
 						<div class="mb-3">
 							<label for="username" class="control-form-label">Email</label>
 							<input type="email" class="form-control" id="email" name="email" placeholder="Digite o email" required>
+						</div>
+						<div class="mb-3">
+							<label for="username" class="control-form-label">Setor</label>
+							<input type="text" class="form-control" id="department" name="department" placeholder="Digite o setor" required>
 						</div>
 
 						<div class="mb-3">

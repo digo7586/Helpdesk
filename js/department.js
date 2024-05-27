@@ -66,7 +66,7 @@ $(document).ready(function() {
 		})
 	});			
 			
-	$(document).on('click', '.delete', function(){
+	$(document).on('click', '.deleteD', function(){
 		var departmentId = $(this).attr("id");		
 		var action = "deleteDepartment";
 		if(confirm("Tem certeza de que deseja excluir este registro?")) {

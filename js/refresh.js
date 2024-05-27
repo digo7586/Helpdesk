@@ -1,7 +1,7 @@
-/* $(document).ready(function() {
+ $(document).ready(function() {
     function updateCommentList() {
         $.ajax({
-            url: "view_ticket_respostas.php",
+            url: "view_ticket.php",
             method: "GET",
             success: function(data) {
                 $('#section-resposta').html(data);
@@ -16,4 +16,4 @@
     setInterval(function() {
         updateCommentList();
     }, 1000);
-}); */
+});

@@ -29,7 +29,7 @@ include('inc/header.php');
 				<div class="field input">
 					<label>Senha</label>
 					<input type="password" id="password" name="password" placeholder="Digite sua senha" required>
-					<i class="bi bi-eye"></i>
+					<i class="bi bi-eye" onclick="show()"></i>
 				</div>
 				<div class="field button">
 					<input type="submit" name="login" value="Login">
@@ -42,6 +42,7 @@ include('inc/header.php');
 		</section>
 	</div>
 
-	<script src="chatw/javascript/pass-show-hide.js"></script>
+
+	 <script src="js/showPassWord.js"></script> 
 </body>
 </html>

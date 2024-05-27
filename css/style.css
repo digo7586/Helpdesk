@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,23 +9,26 @@
 html,
 body {
     min-height: 100%;
-	margin: 0;
-	padding: 0;
     font-family: Roboto, Arial, sans-serif;
     font-size: 16px;
     color: #2e2c2c;
-    background: #d0e1f7
+    background: #b9e6fe;
 }
-
-
 
 /* navbar */
 
 .mainbg {
-	background-color: #1b305cb4;
-	padding: 0 6px;
+	background-color: #065986;
+	padding: 0 10px;
 	margin-bottom: 1rem;
 }
+
+.mainbg:hover {
+	background-color: #0b4a6f;
+	transition-duration: 1.6s;
+}
+
+
 
 .logo {
 	width: 140px;
@@ -35,14 +40,29 @@ body {
 	font-size: 18px;
 }
 
-.navEng {
-	color: #ffffffb0;
+.nav-links {
+	color: #f0f9ff;
     text-decoration: none;
     transition-duration:0.6s;
-	margin-right: 10px;
+	padding: 10px;
 	cursor: pointer;
-	
 }
+
+.nav-links:hover {
+	color: #7cd3fd;
+}
+
+
+	
+	/* foto perfil */
+.perfil {
+	margin-right: 10px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+  }
+  
+
 
 li>a>i {
 	margin-right: 10px;
@@ -129,7 +149,7 @@ li>a>i {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 2px solid rgba(0, 128, 0, 0.123);
+	border: 2px solid rgba(107, 102, 102, 0.966);
 	border-radius: 8px;
 	
 	
@@ -138,30 +158,19 @@ li>a>i {
 
 #section-resposta {
 	width: 800px;
-	height: 500px;
+	height: 380px;
 	overflow: auto;
 	overflow-x: hidden;
-	margin-left: 208px;
-
+	
 	
 }
 
 .txtArea {
-	width: 900px;
-	margin-top: 20px;
-	margin-left: 70px;
+	width: 800px;
 	
+
 }
 
-
-
-.caixaDoFormtxtArea {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 30px;
-	
-}
 
 /* mostra escode senha */
 

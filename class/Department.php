@@ -33,18 +33,22 @@ class Department extends Database {
 		while( $department = mysqli_fetch_assoc($result) ) {		
 			$departmentRows = array();			
 			$status = '';
-			if($department['status'] == 1)	{
-				$status = '<span class="label label-success">Ativo</span>';
-			} else if($department['status'] == 0) {
-				$status = '<span class="label label-danger">Inativo</span>';
-			}	
+
+			switch($department['status']) {
+				case 1:
+					$status = '<span class="label label-success">Ativo</span>';
+					break;
+				case 0: 
+					$status = '<span class="label label-danger">Inativo</span>';
+					break;
+			}
 			
 			$departmentRows[] = $department['id'];
 			$departmentRows[] = $department['name'];			
 			$departmentRows[] = $status;
 				
 			$departmentRows[] = '<button type="button" name="update" id="'.$department["id"].'" class="btn btn-secondary btn-sm update">Editar</button>';
-			$departmentRows[] = '<button type="button" name="delete" id="'.$department["id"].'" class="btn btn-danger btn-sm delete">Deletar</button>';
+			$departmentRows[] = '<button type="button" name="delete" id="'.$department["id"].'" class="btn btn-danger btn-sm deleteD">Deletar</button>';
 			$departmentData[] = $departmentRows;
 		}
 		$output = array(

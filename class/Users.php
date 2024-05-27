@@ -58,7 +58,7 @@ class Users extends Database {
 	
 	public function listUser(){
 			 			 
-		$sqlQuery = "SELECT id, name, email, create_date, user_type, status 
+		$sqlQuery = "SELECT id, name, email, department, create_date, user_type, status 
 			FROM ".$this->userTable;
 			
 		if(!empty($_POST["search"]["value"])){
@@ -69,7 +69,7 @@ class Users extends Database {
 		if(!empty($_POST["order"])){
 			$sqlQuery .= ' ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
 		} else {
-			$sqlQuery .= ' ORDER BY id DESC ';
+			$sqlQuery .= ' ORDER BY name ASC ';
 		}
 		if($_POST["length"] != -1){
 			$sqlQuery .= ' LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -81,28 +81,33 @@ class Users extends Database {
 		while( $user = mysqli_fetch_assoc($result) ) {		
 			$userRows = array();			
 			$status = '';
-			if($user['status'] == 1)	{
-				$status = '<span class="text-success">Ativo</span>';
-			} else if($user['status'] == 0) {
-				$status = '<span class="text-danger">Inativo</span>';
-			}	
-			
+			switch ($user['status']) {
+				case 1:
+					$status = '<span class="text-success">Ativo</span>';
+					break;
+				case 0:
+					$status = '<span class="text-danger">Inativo</span>';
+			}
+
 			$userRole = '';
-			if($user['user_type'] == 'admin')	{
-				$userRole = '<span class="text-primary">Admin</span>';
-			} else if($user['user_type'] == 'user') {
-				$userRole = '<span class="text-dark">Usuario</span>';
-			}	
+			switch ($user['user_type']) {
+				case 'admin':
+					$userRole = '<span class="text-primary">Admin</span>';
+					break;
+				case 'user':
+					$userRole = '<span class="text-dark">Usuario</span>';
+			}
 			
 			$userRows[] = $user['id'];
 			$userRows[] = $user['name'];
 			$userRows[] = $user['email'];
+			$userRows[] = $user['department'];
 			$userRows[] = $user['create_date'];
 			$userRows[] = $userRole;			
 			$userRows[] = $status;
 				
-			$userRows[] = '<button type="button" name="update" id="'.$user["id"].'" class="btn btn-secondary btn-sm update">Edit</button>';
-			$userRows[] = '<button type="button" name="delete" id="'.$user["id"].'" class="btn btn-danger btn-sm delete">Delete</button>';
+			$userRows[] = '<button type="button" name="update" id="'.$user["id"].'" class="btn btn-secondary btn-sm update">Editar</button>';
+			$userRows[] = '<button type="button" name="delete" id="'.$user["id"].'" class="btn btn-danger btn-sm delete">Deletar</button>';
 			$userData[] = $userRows;
 		}
 		$output = array(
@@ -118,7 +123,7 @@ class Users extends Database {
 	public function getUserDetails(){		
 		if($this->id) {		
 			$sqlQuery = "
-				SELECT id, name, email, password, create_date, user_type, status 
+				SELECT id, name, email, department, password, create_date, user_type, status 
 				FROM ".$this->userTable." 
 				WHERE id = '".$this->id."'";
 			$result = mysqli_query($this->dbConnect, $sqlQuery);	
@@ -132,8 +137,8 @@ class Users extends Database {
 			$this->userName = strip_tags($this->userName);			
 			$this->newPassword = md5($this->newPassword);			
 			$queryInsert = "
-				INSERT INTO ".$this->userTable."(name, email, user_type, status, password) VALUES(
-				'".$this->userName."', '".$this->email."', '".$this->role."','".$this->status."', '".$this->newPassword."')";				
+				INSERT INTO ".$this->userTable."(name, email, department, user_type, status, password) VALUES(
+				'".$this->userName."', '".$this->email."', '".$this->department."', '".$this->role."','".$this->status."', '".$this->newPassword."')";				
 			mysqli_query($this->dbConnect, $queryInsert);			
 		}
 	}	
@@ -150,7 +155,7 @@ class Users extends Database {
 			
 			$queryUpdate = "
 				UPDATE ".$this->userTable." 
-				SET name = '".$this->userName."', email = '".$this->email."', user_type = '".$this->role."', status = '".$this->status."' $changePassword
+				SET name = '".$this->userName."', email = '".$this->email."', department = '".$this->department."', user_type = '".$this->role."', status = '".$this->status."' $changePassword
 				WHERE id = '".$this->updateUserId."'";				
 			mysqli_query($this->dbConnect, $queryUpdate);			
 		}

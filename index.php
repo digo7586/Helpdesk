@@ -46,7 +46,7 @@ $user = $users->getUserInfo();
 			<thead>
 				<tr>
 					<th>S/N66</th>
-					<th>Ticket ID</th>
+					<!-- <th>Ticket ID</th> -->
 					<th>Subject</th>
 					<th>Department</th>
 					<th>Created By</th>					
@@ -62,3 +62,27 @@ $user = $users->getUserInfo();
 	<?php include('add_ticket_model.php'); ?>
 </div>	
 <?php include('inc/footer.php');?>
+
+<script>
+    // Função para fazer a solicitação AJAX
+function checkForNewTickets() {
+    // Fazer a solicitação AJAX para o arquivo PHP que executa a consulta SQL
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'check_new_tickets.php', true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Verificar se há novos tickets
+            var response = JSON.parse(xhr.responseText);
+            if (response.newTickets) {
+                alert("Novos tickets foram encontrados!");
+            }
+        }
+    };
+
+    xhr.send();
+}
+
+// Chamar a função checkForNewTickets a cada 5 minutos
+setInterval(checkForNewTickets, 3 * 1000);
+</script>
