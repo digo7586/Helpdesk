@@ -62,7 +62,7 @@ $valoresChamadosPorSetor = array_values($dadosChamadosPorSetor);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Suporte | ENGEBAG E BAGCLEANER</title>
+    <title>Suporte | BAGCLEANER</title>
     <link rel="shortcut icon" href="icone.ico">
     <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
