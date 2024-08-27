@@ -1,5 +1,0 @@
-	Hardware (Mouse,Teclado...)
-	Internet (Sem acesso...)
-	Softaware (Programas, Planilhas, Email, Spark...)
-	impressora (Papel preso, Impressão fraca...)
-	Câmeras ()

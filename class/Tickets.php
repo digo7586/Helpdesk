@@ -42,45 +42,55 @@ class Tickets extends Database {
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		$numRows = mysqli_num_rows($result);
 		$ticketData = array();	
-		while( $ticket = mysqli_fetch_assoc($result) ) {		
-			$ticketRows = array();			
+		while ($ticket = mysqli_fetch_assoc($result)) {
+			$ticketRows = array();
 			$status = '';
-			switch ($ticket['resolved']) {
-				case 0: $status = '<span class="text-success">Aberto</span>';
-					break;
-				case 1:	$status = '<span class="text-warning">Visto</span>';
-					break;
-				case 2: $status = '<span class="text-danger">Fechado</span>';
-				
-			};
-
-			$title = $ticket['title'];
-			if((isset($_SESSION["admin"]) && !$ticket['admin_read'] && $ticket['last_reply'] != $_SESSION["userid"]) || (!isset($_SESSION["admin"]) && !$ticket['user_read'] && $ticket['last_reply'] != $ticket['user'])) {
-				$title = $this->getRepliedTitle($ticket['title']);			
-			}
-			$disbaled = '';
-			if(!isset($_SESSION["admin"])) {
-				$disbaled = 'disabled';
-			}			
-			$ticketRows[] = $ticket['id'];
-			/* $ticketRows[] = $ticket['uniqid']; */
-			$ticketRows[] = '<input type="hidden" name="uniqid" value="' . $ticket['uniqid'] . '">';
 			
+			switch ($ticket['resolved']) {
+				case 0:
+					$status = '<span class="text-success">Aberto</span>';
+					break;
+				case 1:
+					$status = '<span class="text-warning">Visto</span>';
+					break;
+				case 2:
+					$status = '<span class="text-danger">Fechado</span>';
+					break;
+			};
+		
+			$title = $ticket['title'];
+			if ((isset($_SESSION["admin"]) && !$ticket['admin_read'] && $ticket['last_reply'] != $_SESSION["userid"]) ||
+				(!isset($_SESSION["admin"]) && !$ticket['user_read'] && $ticket['last_reply'] != $ticket['user'])) {
+				$title = $this->getRepliedTitle($ticket['title']);
+			}
+		
+			// Verificar se o botão de edição deve ser desabilitado
+			$disable = '';
+			if (!isset($_SESSION["admin"])) {
+				if ($ticket['resolved'] == 1 || $ticket['resolved'] == 2) {
+					$disable = 'disabled'; // Desabilita para usuário padrão se resolved for 1
+				}
+			}
+		
+			$ticketRows[] = $ticket['id'];
+			$ticketRows[] = '<input type="hidden" name="uniqid" value="' . $ticket['uniqid'] . '">';
 			$ticketRows[] = $ticket['priority'];
 			$ticketRows[] = $title;
 			$ticketRows[] = $ticket['department'];
-			$ticketRows[] = $ticket['creater']; 			
+			$ticketRows[] = $ticket['creater'];
 			$ticketRows[] = $time->tempo($ticket['date']);
 			$ticketRows[] = $status;
+		
+			$ticketRows[] = '<a href="view_ticket.php?id=' . $ticket["uniqid"] . '" class="btn btn-sm update" style="background-color:#0089cf; color:white"><i class="bi bi-eye"></i></a>';
+		
+			// Botão de edição modificado
+			$ticketRows[] = '<button type="button" name="update" id="' . $ticket["id"] . '" class="btn btn-secondary btn-sm update" ' . $disable . '><i class="bi bi-pencil-square"></i></button>';
 			
-			$ticketRows[] = '<a href="view_ticket.php?id='.$ticket["uniqid"].'"class="btn btn-sm update" style="background-color:#0089cf; color:white""><i class="bi bi-eye"></i></a>';	
-			$ticketRows[] = '<button type="button" name="update" id="'.$ticket["id"].'" class="btn btn-secondary btn-sm update" '.$disbaled.'><i class="bi bi-pencil-square"></i></button>';
-			$ticketRows[] = '<button type="button" name="delete" id="'.$ticket["id"].'" class="btn btn-danger btn-sm deleteT"  '.$disbaled.'>Fechar</button>';
-			/* $ticketRows[] = '<button type="button" name="delete" id="'.$ticket["id"].'" class="btn btn-danger btn-sm deleteTicket"  '.$disbaled.'><i class="bi bi-trash"></i></button>'; */
+			$ticketRows[] = '<button type="button" name="delete" id="' . $ticket["id"] . '" class="btn btn-danger btn-sm deleteT" ' . $disable . '>Fechar</button>';
+		
 			$ticketData[] = $ticketRows;
-
+		}
 			
-		}		
 		
 		$output = array(
 			"draw"				=>	intval($_POST["draw"]),
@@ -217,6 +227,19 @@ class Tickets extends Database {
 		$sqlDelete = "DELETE FROM ".$this->ticketTable." WHERE id = '".$ticketId."'";
 		mysqli_query($this->dbConnect, $sqlDelete);
 	}
+
+	public function getTicketById($id) {
+		$sqlQuery = "SELECT t.id, t.uniqid, t.title, t.init_msg as message, t.date, t.last_reply, t.resolved, 
+							u.name as creater, u.department as department, p.name as priority
+					 FROM " . $this->ticketTable . " t 
+					 LEFT JOIN hd_users u ON t.user = u.id
+					 LEFT JOIN problemas p ON t.problem = p.id 
+					 LEFT JOIN hd_departments d ON t.department = d.id 
+					 WHERE t.id = " . intval($id);
+		$result = mysqli_query($this->dbConnect, $sqlQuery);
+		return mysqli_fetch_assoc($result);
+	}
+	
 	
 
 	

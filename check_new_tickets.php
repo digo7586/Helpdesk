@@ -9,7 +9,7 @@ require_once('config/conn.php');
 $query = "SELECT COUNT(*) AS total FROM `hd_tickets` WHERE resolved = 0";
 $result = $link->query($query);
 
-// Verificar se a consulta foi bem-sucedida
+
 if ($result) {
     // Obter o número total de tickets não resolvidos
     $row = $result->fetch_assoc();

@@ -50,7 +50,7 @@ require_once('../config/conn.php');
 					</li>
 
 					<li class="nav-item navBag" id="user">
-						<a class="nav-link navBag" href="index.php"><i class="bi bi-code-slash"></i>Projetos</a>
+						<a class="nav-link navBag" href="index.php"><i class="bi bi-code-slash"></i>Procedimentos</a>
 
 					</li>
 				<?php } ?>
@@ -91,7 +91,7 @@ require_once('../config/conn.php');
                 Instalar RM
             </div>
             <div class="info">
-                <img src="image/courses.jpg">
+                <img src="image/totvs.jpg">
                 <h3>RM</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem unde ratione fugiat.</p>
             </div>
@@ -102,13 +102,14 @@ require_once('../config/conn.php');
                 Configurar xampp
             </div>
             <div class="info">
-                <img src="image/team.jpg">
+                <img src="image/xamp.png">
                 <h3>XAMPP / SQL</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem unde ratione fugiat.</p>
             </div>
+            <a href="#">Learn More</a>
             
         </div>
-        <div class="card">
+       <!--  <div class="card">
             <div class="card-title">
                 Atualizar Site
             </div>
@@ -118,7 +119,7 @@ require_once('../config/conn.php');
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem unde ratione fugiat.</p>
             </div>
             <a href="#">Learn More</a>
-        </div>
+        </div> -->
        
     </div>
 

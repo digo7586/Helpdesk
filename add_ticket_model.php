@@ -75,13 +75,13 @@ $departmentName = getDepartmentNameById($departmentId);
                             
                         </div>
 
-                        <div class="form-group mb-1">
-                            <label for="department" class="control-label mb-1">Ocorrência</label>
-                            <select id="priority" name="priority" class="form-control" style="background-color: #b3e4ff;">
-                                <option value="Selecione">Selecione</option>
-                                <?php $tickets->getpriority(); ?>
-                            </select> 
-                        </div>
+                            <div class="form-group mb-1">
+                                <label for="department" class="control-label mb-1">Ocorrência</label>
+                                <select required id="priority" name="priority" class="form-control" style="background-color: #b3e4ff;">
+                                    <option value="Selecione">Selecione</option>
+                                    <?php $tickets->getpriority(); ?>
+                                </select> 
+                            </div>
 
                         <div class="form-group mb-1">
                             <label for="department" class="control-label mb-1">Setor</label>
@@ -109,7 +109,9 @@ $departmentName = getDepartmentNameById($departmentId);
                         <div class="form-group mb-1">
                             <label for="message" class="control-label">Mensagem</label>
                             <textarea class="form-control" rows="5" id="message" name="message" placeholder="Descreva..." required></textarea>
-                        </div>                  
+                        </div>    
+                        
+                        
                     </section>
                 
                    
@@ -136,7 +138,7 @@ $departmentName = getDepartmentNameById($departmentId);
                 <div class="modal-footer">
                     <input type="hidden" name="ticketId" id="ticketId" />
                     <input type="hidden" name="action" id="action" value="" />
-                    <button type="submit" name="save" id="save" class="btn btn-primary" value="Save">Salvar</button>
+                    <button type="submit" name="save" id="save" class="btn btn-primary" value="Save" onclick="myFunction()">Enviar</button>
                     
 
                          
@@ -149,3 +151,4 @@ $departmentName = getDepartmentNameById($departmentId);
 </div>
 
 <script src="js/notification.js"></script>
+<script src="js/conrfirmedTicket.js"></script>

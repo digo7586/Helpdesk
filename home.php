@@ -46,8 +46,8 @@ $setores = $link->query("SELECT * FROM hd_departments");
 // Prepare data for chart
 $dadosChamadosPorSetor = [];
 while ($ocorrenciaPorSetor = mysqli_fetch_object($totalSetor)) {
-    $setorNome = $link->query("SELECT * FROM `hd_departments` WHERE id = $ocorrenciaPorSetor->department");
-    if ($setorNome && $setor = mysqli_fetch_object($setorNome)) {
+    $setorNomeQuery = $link->query("SELECT * FROM `hd_departments` WHERE id = $ocorrenciaPorSetor->department");
+    if ($setorNomeQuery && $setor = mysqli_fetch_object($setorNomeQuery)) {
         $dadosChamadosPorSetor[$setor->name] = $ocorrenciaPorSetor->qtd;
     } else {
         $dadosChamadosPorSetor["Setor Desconhecido"] = $ocorrenciaPorSetor->qtd;
@@ -55,7 +55,6 @@ while ($ocorrenciaPorSetor = mysqli_fetch_object($totalSetor)) {
 }
 $labelsChamadosPorSetor = array_keys($dadosChamadosPorSetor);
 $valoresChamadosPorSetor = array_values($dadosChamadosPorSetor);
-
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +81,7 @@ $valoresChamadosPorSetor = array_values($dadosChamadosPorSetor);
     <div class="container-fluid">
         <?php include_once('infodash.php'); ?>
         <div class="row">
-            <div class="col-lg-5 col-md-4 col-sm g-5">
+            <div class="col-lg-5 col-md-4 col-sm g-5 pb-4">
                 <div class="card">
                     <div class="card-bdy">
                         <div class="card-title mb-4">
@@ -113,7 +112,7 @@ $valoresChamadosPorSetor = array_values($dadosChamadosPorSetor);
                     </script>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-4 col-sm g-5">
+            <div class="col-lg-6 col-md-4 col-sm g-5 pb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title mb-4">
@@ -142,34 +141,59 @@ $valoresChamadosPorSetor = array_values($dadosChamadosPorSetor);
                                             }
                                             ?>
                                         </select>
+
+                                        <label for="selecionarSetor">Selecione um setor:</label>
+    <select id="selecionarSetor" name="selecionarSetor">
+        <option value="todos">Todos</option>
+        <?php
+        $setoresQuery = $link->query("SELECT * FROM `hd_departments`");
+        while ($setor = mysqli_fetch_object($setoresQuery)) {
+            echo "<option value='{$setor->id}'>{$setor->name}</option>";
+        }
+        ?>
+    </select>
                                     </form>
                                 </div>
                             </div>
                             <script>
                                 function atualizarChamadosRecorrentes() {
-                                    var selectValor = document.getElementById('selecionarChamado').value;
-                                    $.ajax({
-                                        url: 'buscar_chamados_recorrentes.php',
-                                        type: 'GET',
-                                        data: { problema: selectValor },
-                                        success: function(data) {
-                                            document.getElementById('tabelaChamadosRecorrentes').innerHTML = data;
-                                        }
-                                    });
+                                    let chamadoValor = document.getElementById('selecionarChamado').value;
+                                    let setorValor = document.getElementById('selecionarSetor').value;
+                                   
+                                        $.ajax({
+                                            url: 'buscar_chamados_recorrentes.php',
+                                            type: 'GET',
+                                            data: { problema: chamadoValor, setor: setorValor },
+                                            success: function(data) {
+                                                document.getElementById('tabelaChamadosRecorrentes').innerHTML = data;
+                                            }
+                                        });
+                                    
                                 }
                                 document.getElementById('selecionarChamado').addEventListener('change', atualizarChamadosRecorrentes);
+                                document.getElementById('selecionarSetor').addEventListener('change', atualizarChamadosRecorrentes);
                                 atualizarChamadosRecorrentes();
                             </script>
                             <?php
                             while ($recorrenciaPorSetor = mysqli_fetch_object($recorrencias)) {
                                 $recorrencia = $recorrenciaPorSetor->problem;
-                                $nomeRecorrencia = $link->query("SELECT * FROM `problemas` WHERE id = $recorrencia");
-                                $recorreName = mysqli_fetch_object($nomeRecorrencia)->name;
+                                $nomeRecorrenciaQuery = $link->query("SELECT * FROM `problemas` WHERE id = $recorrencia");
+                                $recorreName = mysqli_fetch_object($nomeRecorrenciaQuery);
                                 $setorDaRecorrencia = $recorrenciaPorSetor->department;
-                                $setorNome = $link->query("SELECT * FROM `hd_departments` WHERE id = $setorDaRecorrencia");
-                                $setorName = mysqli_fetch_object($setorNome)->name;
+                                $setorNomeQuery = $link->query("SELECT * FROM `hd_departments` WHERE id = $setorDaRecorrencia");
+                                $setorName = mysqli_fetch_object($setorNomeQuery);
+
+                                // Verifique se ambos $recorreName e $setorName não são nulos
+                                if ($recorreName && $setorName) {
+                                    $recorreName = $recorreName->name;
+                                    $setorName = $setorName->name;
+                                } else {
+                                    // Defina valores padrão para evitar erros
+                                    $recorreName = $recorreName ? $recorreName->name : "Desconhecido";
+                                    $setorName = $setorName ? $setorName->name : "Desconhecido";
+                                }
                             ?>
-                                <tr data-toggle="modal" data-target="#chamadoModal" data-id="<?= $recorrenciaPorSetor->id ?>">
+                                <tr data-bs-toggle="modal" data-bs-target="#chamadoModal" data-id="<?= $recorrenciaPorSetor->id ?>">
                                     <td><?= $recorreName ?></td>
                                     <td><?= $setorName ?></td>
                                     <td><?= $recorrenciaPorSetor->qtd ?></td>
@@ -177,45 +201,28 @@ $valoresChamadosPorSetor = array_values($dadosChamadosPorSetor);
                             <?php } ?>
                         </tbody>
                     </table>
+                   
+                    <script>
+                        $(document).ready(function () {
+                            $('#chamadoModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget);
+                                var chamadoId = button.data('id');
+
+                                var modal = $(this);
+                                $.ajax({
+                                    url: 'buscar_detalhes_chamado.php',
+                                    type: 'GET',
+                                    data: { id: chamadoId },
+                                    success: function (data) {
+                                        modal.find('#modalChamadoContent').html(data);
+                                    }
+                                });
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="chamadoModal" tabindex="-1" aria-labelledby="chamadoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="chamadoModalLabel">Detalhes do Chamado</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="detalhesChamado"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $('#chamadoModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var chamadoId = button.data('id');
-            var modal = $(this);
-            $.ajax({
-                url: 'buscar_detalhes_chamado.php',
-                type: 'GET',
-                data: { id: chamadoId },
-                success: function(data) {
-                    modal.find('#detalhesChamado').html(data);
-                }
-            });
-        });
-    </script>
-
-    <?php include('inc/footer.php'); ?>
 </body>
 </html>

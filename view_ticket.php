@@ -99,11 +99,11 @@ $tickets->updateTicketReadStatus($ticketDetails['id']);
 				<div class="col-md-10 col-sm-10">
 					<div class="form-group">
 					<div class="form-group">
-						<?php if ($ticketDetails['resolved'] != 2) { ?>
+						 <?php  if ($ticketDetails['resolved'] != 2) {  ?> 
 							<textarea class="form-control mt-2" rows="3" id="message" name="message" placeholder="Escreva sua resposta..."></textarea>
-						<?php } else { ?>
-							<textarea class="form-control mt-2" rows="3" id="message" name="message" placeholder="Escreva sua resposta..." required readonly></textarea>
-						<?php } ?>
+						 <?php } else {  ?> 
+						 	<textarea class="form-control mt-2" rows="3" id="message" name="message" placeholder="Chamado fechado, resposta desabilitadas..." required disabled></textarea>
+						 <?php }  ?> 
 					</div>
 
 					

@@ -27,7 +27,7 @@
 					</li>
 
 					<li class="nav-item navBag" id="user">
-						<a class="nav-link navBag" href="#"><i class="bi bi-code-slash"></i>Projetos</a>
+						<a class="nav-link navBag" href="#"><i class="bi bi-code-slash"></i>Procedimentos</a>
 						
 					</li>
 				<?php } ?>

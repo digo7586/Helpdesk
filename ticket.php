@@ -123,3 +123,5 @@ $usuarios = $totalUsuariosResult->qtd;
 	<?php require_once('inc/footer.php'); ?>
 </div>
 
+<script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+

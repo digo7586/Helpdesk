@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg mainbg">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="ticket.php">
-			<img class="logo" src="./img/logobag.png" alt="logo"></a>
+			<div class="bg-light" style="margin: 2px; padding: 2px; border-radius: 5px">
+			<img class="logo ms-3" src="./img/logobag.png" alt="logo"></a>
+			</div>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -29,7 +31,7 @@
 					</li>
 
 					 <li class="nav-item navBag" id="user">
-						<a class="nav-links navBag" href="Procedimentos/index.php"><i class="bi bi-code-slash"></i>Projetos</a>
+						<a class="nav-links navBag" href="Procedimentos/index.php"><i class="bi bi-code-slash"></i>Procedimentos</a>
 
 					</li> 
 				<?php } ?>

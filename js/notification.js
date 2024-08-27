@@ -37,5 +37,5 @@ function enviarNotificacao() {
                     }
                 }
 
-// Chamar a função checkForNewTickets a cada 2 minutos
+// Chamar a função checkForNewTickets a cada minuto
 setInterval(checkForNewTickets, 1 * 60 * 1000);
